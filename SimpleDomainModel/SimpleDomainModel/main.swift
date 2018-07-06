@@ -96,28 +96,14 @@ public struct Money {
                 }
             
             default:
-                return Money(amount: newAmt, currency: "EUR")
+                return Money(amount: 0, currency: "UNKNOWN")
         }
         return Money(amount: newAmt, currency: "EUR")
     }
   
     public func add(_ to: Money) -> Money {
         let convertToCurrency = to.convert(to.currency)
-        
         return Money(amount: convertToCurrency.amount + to.amount, currency: convertToCurrency.currency)
-        
-        /*switch to.currency {
-        case "USD":
-            return Money(amount: convertToCurrency.amount + to.amount, currency: convertToCurrency.currency)
-        case "GBP":
-            <#code#>
-        case "EUR":
-            <#code#>
-        case "CAN":
-            <#code#>
-        default:
-            <#code#>
-        }*/
     }
     
     public func subtract(_ from: Money) -> Money {
